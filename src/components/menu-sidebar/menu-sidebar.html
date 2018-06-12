@@ -1,0 +1,57 @@
+<ion-menu [content]="mycontent">
+  <ion-header style="padding: 45px;">
+    <ion-row>
+      <div class="col col-lg-12 obj-center">
+        <img class="circle-pic" width="512" src="./assets/imgs/my-avatar.jpg" />
+      </div>
+    </ion-row>
+    <ion-row>
+      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 1.3em;">
+        a0mkuma
+      </div>
+    </ion-row>
+    <ion-row>
+      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 0.8em;">
+        Korapot U-koskit
+      </div>
+    </ion-row>
+  </ion-header>
+  <ion-content  class="menu-style">
+    <ion-list  class="menu-style">
+    	<ion-item menuClose detail-none>ข้อมูลผู้ใช้</ion-item>
+    	<ion-item menuClose detail-none>แก้ไขข้อมูล</ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-footer padding style="text-align: center;">
+    <span style="font-size: 0.7em;">XFM 94.5 v 1.0</span>
+    <br>
+    <ion-row style="padding-top: 15px;">
+          <div class="col col-lg-12 obj-center"  style="text-align: center; background-color: #D72525; padding: 15px;">
+               
+                <ion-icon [name]="'md-log-out'" item-end></ion-icon>
+               
+                Logout
+          </div>
+    </ion-row>
+  </ion-footer>
+</ion-menu>
+
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+    	<ion-row>
+    		<div class = "col col-offset-33 white-color medium-size">
+				<ion-icon [color]="light" [name]="'menu'" menuToggle item-end></ion-icon>
+		    </div>
+		    <div class = "col col-offset-33 obj-center white-color" style="padding-top:2%;">
+		    	XFM
+		    </div>
+		    <div class = "col col-offset-33 obj-right white-color medium-size">
+		    	<ion-icon [color]="light" [name]="'ios-settings-outline'" item-end></ion-icon>
+		    </div>
+	    </ion-row>
+    </ion-title>
+  </ion-navbar>
+</ion-header>

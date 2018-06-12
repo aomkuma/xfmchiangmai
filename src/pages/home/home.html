@@ -1,0 +1,91 @@
+<menu-sidebar></menu-sidebar>
+<ion-content padding class="main-classes" style="background: linear-gradient(#E22E2E, #580202);">
+	<br /><br /><br /><br /><br /><br />
+  	<h6 class="obj-center">ยินดีต้อนรับคุณผู้ฟังทุกท่าน</h6>
+  	<h4 class="obj-center"><strong>Name of Song</strong></h4>
+	<ion-grid>
+		<ion-row>
+			<div class = "col col-offset-25">
+				<div class="container">
+					<div class="circle-outside-share">
+						<div class="share-btn" style="left:3%; top:15%;">
+							<!--<ion-icon class="icon-play-lause"  style="left: 35%;" [color]="light" [name]="'md-share'" item-end></ion-icon>-->
+							<ion-fab bottom right #fab>
+							   <button ion-fab>
+							   		<ion-icon style="" [color]="light" [name]="'md-share'" item-end></ion-icon>
+							   	</button>
+							   <ion-fab-list side="left">
+							   	<ion-row>
+        							<ion-col>
+									     <button ion-fab (tap)="shareViaFacebook('facebook', fab)">
+									     	<ion-icon [name]="'logo-facebook'" item-end></ion-icon>
+									     </button>
+									</ion-col>
+									<ion-col>
+									     <button ion-fab (tap)="shareViaInstagram('instagram', fab)">
+									     	<ion-icon [name]="'logo-instagram'" item-end></ion-icon>
+									     </button>
+									</ion-col>
+								</ion-row>
+							   </ion-fab-list>
+							 </ion-fab>
+						</div>
+					</div>
+					<div class="circle-outside" (tap)="manageAudio()">
+						<div class="circle">
+							<!--<ion-icon class="icon-play-lause" [color]="light" [name]="_streamPaused == false ? 'pause': 'play'" item-end></ion-icon>-->
+							<ion-icon *ngIf="!_streamPaused" class="icon-play-lause" [color]="light" [name]="'pause'" item-end></ion-icon>
+							<ion-icon *ngIf="_streamPaused" class="icon-play" [color]="light" [name]="'play'" item-end></ion-icon>
+						</div>
+					</div>
+					<div class="circle-outside-share">
+						<div class="share-btn">
+							<ion-icon class="icon-play-lause" style="left: 32%;" [color]="light" [name]="'ios-heart-outline'" item-end></ion-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ion-row>
+		<ion-row ng-class="obj-center">
+			<div style="width: 100%; text-align: center;">
+				<div style="width: 80%; text-align: center;  margin:0 auto;">
+					<ion-range min="20" max="80" step="2" [(ngModel)]="brightness" color="danger" pin="true" style="width: 100%;">
+				  	</ion-range>
+				</div>
+			</div>
+		</ion-row>
+		<ion-row>
+			<div class = "col col-offset-25">
+				<div class="container">
+					<div class="icon-general-outside"  (tap)="goToPage('AboutPage')">
+						<div class="icon-general">
+							<ion-icon class="icon-normal"  style="left: 35%;" [color]="light" [name]="'md-videocam'" item-end></ion-icon>
+						</div>
+					</div>
+					<div class="icon-general-outside">
+						<div class="icon-general">
+							<ion-icon class="icon-normal" [color]="light" [name]="'md-call'" item-end></ion-icon>
+						</div>
+					</div>
+					<!--<div class="icon-general-outside" (tap)="sendSMS('Test text messages')">
+						<div class="icon-general">
+							<ion-icon class="icon-normal" style="left: 32%;" [color]="light" [name]="'md-text'" item-end></ion-icon>
+						</div>
+					</div>-->
+					<div class="icon-general-outside" (tap)="openFacebook()">
+						<div class="icon-general">
+							<ion-icon class="icon-normal" style="left: 32%;" [color]="light" [name]="'logo-facebook'" item-end></ion-icon>
+						</div>
+					</div>
+					<div class="icon-general-outside" (tap)="openInstagram()">
+						<div class="icon-general">
+							<ion-icon class="icon-normal" style="left: 32%;" [color]="light" [name]="'logo-instagram'" item-end></ion-icon>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</ion-row>
+  	</ion-grid>
+
+</ion-content>

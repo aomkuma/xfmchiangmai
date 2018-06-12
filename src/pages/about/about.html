@@ -1,0 +1,98 @@
+<menu-sidebar></menu-sidebar>
+<ion-content padding class="main-classes" style="background: linear-gradient(#E22E2E, #580202);">
+	<br /><br /><br /><br />  
+	  <div class="calendar-header">
+	    <ion-row class="calendar-month">
+	      <ion-col col-2 (click)="goToLastMonth()"><ion-icon name="arrow-back"></ion-icon></ion-col>
+	      <ion-col col-8><span style="font-weight: bolder;">{{currentMonth}} {{currentYear}}</span>
+	      	<br><span style="color:red;">EVENT</span> </ion-col>
+	      <ion-col col-2 (click)="goToNextMonth()"><ion-icon name="arrow-forward"></ion-icon></ion-col>
+	    </ion-row>
+	  </div>
+	  <div class="calendar-body">
+	    <ion-grid>
+	      <ion-row class="calendar-weekday">
+	        <ion-col><span style="color:red;">SUN</span></ion-col>
+	        <ion-col>MON</ion-col>
+	        <ion-col>TUE</ion-col>
+	        <ion-col>WED</ion-col>
+	        <ion-col>THU</ion-col>
+	        <ion-col>FRI</ion-col>
+	        <ion-col><span style="color:red;">SAT</span></ion-col>
+	      </ion-row>
+	      <ion-row class="calendar-date">
+	        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
+	        <ion-col col-1 *ngFor="let day of daysInThisMonth">
+	          <span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+	          <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+	        </ion-col>
+	        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
+	      </ion-row>
+	    </ion-grid>
+	  </div>
+
+  	<!--<ion-grid>
+  		<ion-row style="background-color: #440505; border-radius: 3%; margin-top: 10px;" class="white-color">
+  			<ion-col col-12 col-xl-6 offset-xl-3 style="padding: 10px; ">
+		  		<div class="obj-center" style="width: 100%;">
+			        <img style="height: 250px; width: auto;" src="assets/imgs/studio_x9450.jpg" />
+			    </div>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;" >
+			        <ion-col col-12>
+			          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม
+			        </ion-col>
+		      	</ion-row>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;">
+			        <ion-col col-6 style="color: #ccc;">
+			          <u>ดูรายละเอียด</u>
+			        </ion-col>
+			        <ion-col col-6 class="obj-right" style=" font-size: 0.9em;color: #ccc;">
+			          วันที่ 15 May 2018
+			        </ion-col>
+		      	</ion-row>
+		      </ion-col>
+	      </ion-row>
+
+	      <ion-row style="background-color: #440505; border-radius: 3%; margin-top: 10px;" class="white-color">
+  			<ion-col col-12 col-xl-6 offset-xl-3 style="padding: 10px; ">
+		  		<div class="obj-center" style="width: 100%;">
+			        <img style="height: 250px; width: auto;" src="assets/imgs/studio_x9450.jpg" />
+			    </div>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;" >
+			        <ion-col col-12>
+			          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรม
+			        </ion-col>
+		      	</ion-row>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;">
+			        <ion-col col-6 style="color: #ccc;">
+			          <u>ดูรายละเอียด</u>
+			        </ion-col>
+			        <ion-col col-6 class="obj-right" style=" font-size: 0.9em;color: #ccc;">
+			          วันที่ 16 May 2018
+			        </ion-col>
+		      	</ion-row>
+		      </ion-col>
+	      </ion-row>
+
+	      <ion-row style="background-color: #440505; border-radius: 3%; margin-top: 10px;" class="white-color">
+  			<ion-col col-12 col-xl-6 offset-xl-3 style="padding: 10px; ">
+		  		<div class="obj-center" style="width: 100%;">
+			        <img style="height: 250px; width: auto;" src="assets/imgs/studio_x9450.jpg" />
+			    </div>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;" >
+			        <ion-col col-12>
+			          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม ทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรมทดสอบรายละเอียดกิจกรรม
+			        </ion-col>
+		      	</ion-row>
+			    <ion-row style="padding-top: 10px; font-size: 0.9em;">
+			        <ion-col col-6 style="color: #ccc;">
+			          <u>ดูรายละเอียด</u>
+			        </ion-col>
+			        <ion-col col-6 class="obj-right" style=" font-size: 0.9em;color: #ccc;">
+			          วันที่ 17 May 2018
+			        </ion-col>
+		      	</ion-row>
+		      </ion-col>
+	      </ion-row>
+  	</ion-grid>-->
+</ion-content>
