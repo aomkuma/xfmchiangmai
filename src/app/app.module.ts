@@ -20,6 +20,7 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SMS } from '@ionic-native/sms';
 
 import {ComponentsModule} from '../components/components.module';
+import { HTTP } from '@ionic-native/http';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import {ComponentsModule} from '../components/components.module';
     MediaStreamServiceProvider,
     SocialSharing,
     InAppBrowser,
-    SMS
+    SMS,
+    HTTP
   ]
 })
 export class AppModule {}

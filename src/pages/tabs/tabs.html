@@ -1,5 +1,18 @@
-<ion-tabs  style="color: #FFFFFF;" >
-  <ion-tab [root]="tab1Root" tabTitle="หน้าหลัก" tabIcon="home"></ion-tab>
-  <ion-tab [root]="tab2Root" tabTitle="กิจกรรม" tabIcon="information-circle"></ion-tab>
-  <ion-tab [root]="tab3Root" tabTitle="ติดต่อเรา" tabIcon="contacts"></ion-tab>
+<ion-footer align-title="center" class="bar-assertive text-center" style="height: 120px;">
+	<ion-row>
+			<div class = "col col-offset-25 text-center" style=" text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 360px; background: url('assets/imgs/slide_next.png');">Slide next to Calendar &nbsp;
+				<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+				<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+			</div>
+	</ion-row>
+	<ion-row>
+			<div class = "col col-offset-25" style="background-color: #CCC; height: 80px;">
+				AD
+			</div>
+	</ion-row>
+</ion-footer>
+<ion-tabs  style="color: #FFFFFF;" class="tabs-item-hide" >
+  <ion-tab [root]="tab1Root" tabTitle="" tabIcon=""></ion-tab>
+  <ion-tab [root]="tab2Root" tabTitle="" tabIcon=""></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="" tabIcon=""></ion-tab>
 </ion-tabs>

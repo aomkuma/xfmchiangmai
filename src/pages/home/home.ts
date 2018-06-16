@@ -10,6 +10,8 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SMS } from '@ionic-native/sms';
 import { Media, MediaObject } from '@ionic-native/media';
+import { HTTP } from '@ionic-native/http';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -27,9 +29,10 @@ export class HomePage {
   public message  : string = 'พร้อมให้บริการฟังเพลงผ่าน Application บนมือถือทั้ง iOS และ Android แล้ววันนี้';
   public image    : string  = 'http://xfmnetwork.com/public/images/soon.png';
   public uri      : string  = 'http://xfmnetwork.com/home';
-  public fbUrl : string = 'https://www.facebook.com/Aom.Nubs';
-  public igUrl : string = 'https://www.instagram.com/a0mkuma/';
-  public smsMobileNo : string = '0917196810';
+  public fbUrl : string = 'https://www.facebook.com/xfmnetwork/';
+  public igUrl : string = 'https://www.instagram.com/xfm_chiangmai/?hl=th';
+  public smsMobileNo : string = '0842229275';
+  public songDesc : string;
   public radio : MediaObject
   constructor(public navCtrl: NavController
     ,public platform : Platform
@@ -38,12 +41,14 @@ export class HomePage {
     ,private iab: InAppBrowser
     ,private sms: SMS
     ,private media: Media
+    ,private http: HTTP
     ) {
 
       this.platform.ready().then(() => { 
         console.log('device ready')
         this._streamPaused = true
         this.manageAudio()
+        this.getSongDesc()
       })
       // file.release();
   }
@@ -62,6 +67,28 @@ export class HomePage {
   //   this.manageAudio()
   // }
 
+  getSongDesc(){
+    this.http.get('http://plaza.xfmnetwork.com/db/nowplaying.txt', {}, {})
+    .then(data => {
+      // this.songDesc = data.data.replace('</h3><h4>', '</h3><br><h4>');
+      // this.songDesc = data.data.replace('</h3><h4>', "</span><br><span style='font-size:1em;'>");
+      // this.songDesc = this.songDesc.replace('<h3>', "<span style='font-size:2em; font-weight:bolder;'>");
+      // this.songDesc = this.songDesc.replace('</h4>', '</span>');
+      this.songDesc = data.data
+      console.log(data.status);
+      console.log(data.data); // data received by server
+      console.log(data.headers);
+
+    })
+    .catch(error => {
+
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+
+    });
+  }
+
   manageAudio() { 
     if(this._streamPaused){
       this.radio = this.media.create('http://stream.xfmnetwork.com:8613/;stream.mp3');
@@ -72,6 +99,8 @@ export class HomePage {
         this._streamPaused = false;
         this.radio.play();
         console.log('play');
+
+        setInterval(() => this.getSongDesc(), 5000);
       }
       
     }else{

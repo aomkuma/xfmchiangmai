@@ -18,7 +18,7 @@ ion-navbar.toolbar {
 }
 
 .share-btn{
-	background: #E22E2E;
+	background: transparent;
     top:10%;
     width: 70px;
     height: 70px;
@@ -29,7 +29,7 @@ ion-navbar.toolbar {
 }
 
 .circle-outside-share {
-    background: #E22E2E;
+    background: transparent;
     width: 90px;
     height: 90px;
     margin: 0 auto;
@@ -39,17 +39,18 @@ ion-navbar.toolbar {
 }
 
 .circle-outside {
-    background: #8A3030;
+    background: transparent;
     width: 90px;
     height: 90px;
     margin: 0 auto;
     position: relative;
     display: inline-block;
     border-radius: 100%;
+    border: 10px solid #EF0000;
 }
 .circle {
-    background: red;
-    top:10%;
+    background: transparent;
+    top:0%;
     width: 70px;
     height: 70px;
   	margin: 0 auto;
