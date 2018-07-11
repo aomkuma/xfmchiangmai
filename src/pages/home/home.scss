@@ -5,7 +5,8 @@ h1, h2, h3, h4, h5, h6{
 	color: #FFFFFF;
 }
 .toolbar-background {
-	background-color: #B33939;
+	margin:0px;
+    padding: 0px;
 }
 
 ion-navbar.toolbar {
@@ -46,7 +47,7 @@ ion-navbar.toolbar {
     position: relative;
     display: inline-block;
     border-radius: 100%;
-    border: 10px solid #EF0000;
+    border: 5px solid #EF0000;
 }
 .circle {
     background: transparent;
@@ -81,7 +82,7 @@ ion-navbar.toolbar {
 
 .icon-play-lause {
     position: absolute;
-    top: 28%;
+    top: 34%;
     left: 38%;
     height: 50%;
     transform: translate(-50%, -50%);
@@ -95,7 +96,7 @@ ion-navbar.toolbar {
 
 .icon-play {
     position: absolute;
-    top: 28%;
+    top: 34%;
     left: 45%;
     height: 50%;
     transform: translate(-50%, -50%);
@@ -153,5 +154,142 @@ div.item-inner{
 
 ion-fab {
   .fab { display: inline-block !important}
+}
+
+
+.event-calendar{
+  [col-1] {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 0 8.33333%;
+    -ms-flex: 0 0 8.33333%;
+    flex: 0 0 14.285714285714286%;
+    width: 14.285714285714286%;
+    max-width: 14.285714285714286%;
+  }
+  .col {
+    text-align: center;
+    padding: 5px;
+  }
+  .last-month, .next-month {
+    color: #000000;
+    font-size: 90%;
+  }
+  .currentDate, .otherDate {
+    padding: 5px;
+  }
+  .currentDate {
+    font-weight: bold;
+    background-color: red;
+    color: white;
+    border-radius: 30px;
+  }
+  .calendar-header {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+  .event-bullet {
+    margin: 2px auto;
+    height: 5px;
+    width: 5px;
+    background-color: green;
+    border-radius: 30px;
+  }
+  .selected-date {
+    width: 20px;
+    height: 2px;
+    background-color: blue;
+  }
+  .unselected-date {
+    border: none;
+  }
+  .calendar-body {
+    opacity: .8; 
+    .grid {
+      padding: 0;
+    }
+    .col:last-child {
+      border-right: none;
+    }
+    .calendar-weekday, .calendar-date {
+      text-align: center;
+      margin: 0;
+      background-color: #000;
+    }
+    .calendar-weekday {
+      font-weight: bold;
+      border-bottom: solid 1px #999;
+      
+      color: #FFFFFF;
+    }
+    .calendar-date {
+      border-top: solid 1px #000;
+      border-bottom: solid 1px #000;
+      color: #FFFFFF;
+    }
+  }
+}
+
+.dialog-event{
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 95%;
+    position: absolute;
+    background-color: rgba(255,255,255,0.1);
+    overflow: scroll;
+
+}
+
+.dialog-event-content{
+    
+    top:16%;
+    left:5%;
+    position: absolute;
+    width: 90%;
+    border: 1px solid #000000;
+    margin: 0 auto;
+    background-color:transparent; 
+    
+}
+
+.dialog-event-header{
+    background-color: #AB2323;
+    
+    color: #FFFFFF;
+    font-size: 1.3em;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.5em;
+}
+.dialog-event-close{
+    position: absolute;
+    top:-9px;
+    right: -13px;
+}
+
+.dialog-event-body{
+    height: 22em;
+    vertical-align: middle;
+    text-align: center;
+    background-color: #FFF;
+}
+
+.dialog-event-footer{
+    padding-top: 2%;
+    text-align: center;
+    height: 0px;
+    background-color: #FFF;
+    padding-bottom: 5px;
+    
+}
+
+.content-text{
+    padding: 10px;
+    text-align: left;
+
+}
+
+.event-section{
+    background-color: #FFF;
 }
 

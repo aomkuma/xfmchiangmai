@@ -1,8 +1,19 @@
 <menu-sidebar></menu-sidebar>
-<ion-content padding class="main-classes" style="background-image: url('assets/imgs/bg_page.png'); background-size: 360px 620px;">
+<ion-content  class="main-classes" style="background-image: url('assets/imgs/bg_page_2.png'); background-size: 100% 100%;" >
+	<div [hidden]="SHOW_PAGE != 'HOME'" (swipe)="swipeEvent($event)" style="height: 100%; ">
 	<br /><br /><br /><br /><br /><br /><br>
-  	<div class="obj-center"><span [innerHTML]="songDesc"></span></div>
+  	<div class="obj-center">
+  		<span [innerHTML]="songDesc"></span>
+
+  	</div>
 	<ion-grid>
+		<!--<ion-row>
+			<div style="z-index: 999999999; color: #FFF;">
+				<br>Loop play : {{cntLoopPlayTxt}}
+  				<br>Media status : {{mediaStatusTxt}}
+  				<br>Eerror Msg : {{errorMsg}}
+			</div>
+		</ion-row>-->
 		<ion-row>
 			<div class = "col col-offset-25">
 				<div class="container">
@@ -10,8 +21,8 @@
 						<div class="share-btn" style="left:3%; top:15%; background: transparent;">
 							<!--<ion-icon class="icon-play-lause"  style="left: 35%;" [color]="light" [name]="'md-share'" item-end></ion-icon>-->
 							<ion-fab bottom right #fab>
-							   <button ion-fab>
-							   		<ion-icon style="background-color: transparent; font-weight: bolder;" [color]="light" [name]="'md-share'" item-end></ion-icon>
+							   <button ion-fab style="background: transparent;">
+							   		<ion-icon style="background-color: transparent; font-weight: bolder; font-size: 3em;" [color]="light" [name]="'md-share'" item-end></ion-icon>
 							   	</button>
 							   <ion-fab-list side="bottom">
 							   	<ion-row>
@@ -30,16 +41,19 @@
 							 </ion-fab>
 						</div>
 					</div>
-					<div class="circle-outside" (tap)="manageAudio()">
+					<div class="circle-outside" (tap)="stopPlay()" *ngIf="!_streamPaused">
 						<div class="circle">
-							<!--<ion-icon class="icon-play-lause" [color]="light" [name]="_streamPaused == false ? 'pause': 'play'" item-end></ion-icon>-->
-							<ion-icon *ngIf="!_streamPaused" class="icon-play-lause" [color]="light" [name]="'pause'" item-end></ion-icon>
-							<ion-icon *ngIf="_streamPaused" class="icon-play" [color]="light" [name]="'play'" item-end></ion-icon>
+							<ion-icon  class="icon-play-lause" [color]="light" [name]="'pause'" item-end></ion-icon>
+						</div>
+					</div>
+					<div class="circle-outside" (tap)="startPlay()" *ngIf="_streamPaused">
+						<div class="circle">
+							<ion-icon class="icon-play" [color]="light" [name]="'play'" item-end></ion-icon>
 						</div>
 					</div>
 					<div class="circle-outside-share">
 						<div class="share-btn">
-							<ion-icon class="icon-play-lause" style="left: 30%; font-weight: bolder;" [color]="light" [name]="'ios-heart-outline'" item-end></ion-icon>
+							<ion-icon class="icon-play-lause" style="left: 30%; font-weight: bolder;  font-size: 3em;" [color]="light" [name]="'ios-heart-outline'" item-end></ion-icon>
 						</div>
 					</div>
 				</div>
@@ -51,39 +65,159 @@
 				</div>
 			</div>
 		</ion-row>
-		<ion-row>
-			<div class = "col col-offset-25">
-				<div class="container">
-					<div class="icon-general-outside"  (tap)="goToPage('AboutPage')">
-						<div class="icon-general">
-							<!--<ion-icon class="icon-normal"  style="left: 35%;" [color]="light" [name]="'md-videocam'" item-end></ion-icon>-->
-							<img style="height: 35px; width: auto;" src="assets/imgs/live.png" />
-						</div>
-					</div>
-					<div class="icon-general-outside">
-						<div class="icon-general">
-							<img style="height: 35px; width: auto;" src="assets/imgs/tel.png" />
-						</div>
-					</div>
-					<!--<div class="icon-general-outside" (tap)="sendSMS('Test text messages')">
-						<div class="icon-general">
-							<ion-icon class="icon-normal" style="left: 32%;" [color]="light" [name]="'md-text'" item-end></ion-icon>
-						</div>
-					</div>-->
-					<div class="icon-general-outside" (tap)="openFacebook()">
-						<div class="icon-general">
-							<img style="height: 38px; width: auto;" src="assets/imgs/facebook.png" />
-						</div>
-					</div>
-					<div class="icon-general-outside" (tap)="openInstagram()">
-						<div class="icon-general">
-							<img style="height: 38px; width: auto;" src="assets/imgs/ig.png" />
-						</div>
-					</div>
+		
+  	</ion-grid>
+  	<div class="text-center" style="position: fixed; bottom: 130px; left:0px; text-align: center; padding-top:3%; color:#FFFFFF; width: 100%;">
+		<div class="container">
+			<div class="icon-general-outside"  (tap)="goToPage('AboutPage')">
+				<div class="icon-general">
+					<!--<ion-icon class="icon-normal"  style="left: 35%;" [color]="light" [name]="'md-videocam'" item-end></ion-icon>-->
+					<img style="height: 2.3em; width: auto;" src="assets/imgs/live.png" />
 				</div>
 			</div>
+			<div class="icon-general-outside" (tap)="makeCallNumber()">
+				<div class="icon-general">
+					<img style="height: 2.7em; width: auto;" src="assets/imgs/tel.png" />
+				</div>
+			</div>
+			<!--<div class="icon-general-outside" (tap)="sendSMS('Test text messages')">
+				<div class="icon-general">
+					<ion-icon class="icon-normal" style="left: 32%;" [color]="light" [name]="'md-text'" item-end></ion-icon>
+				</div>
+			</div>-->
+			<div class="icon-general-outside" (tap)="openFacebook()">
+				<div class="icon-general">
+					<img style="height: 3em; width: auto;" src="assets/imgs/facebook.png" />
+				</div>
+			</div>
+			<div class="icon-general-outside" (tap)="openInstagram()">
+				<div class="icon-general">
+					<img style="height: 3em; width: auto;" src="assets/imgs/ig.png" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="text-center" style="position: fixed; bottom: 80px; left:0px; text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 100%; background: url('assets/imgs/slide_next.png');">
+		Next to Calendar &nbsp;
+		<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+		<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+	</div>
+  </div>
 
-		</ion-row>
-  	</ion-grid>
+  <div class="event-calendar" [hidden]="SHOW_PAGE != 'EVENT'" (swipe)="swipeEvent($event)" style="height: 100%; width: 100%; display: flex;align-items: center;justify-content: center;">
+		<div style="width: 100%; height: 60%;"> 
+		  <div class="calendar-header">
+		    <ion-row class="calendar-month">
+		      <ion-col col-2 (click)="goToLastMonth()" style="text-align: center; vertical-align: middle; padding-top: 10px;">
+		      		<img style="height: 2.3em; width: auto;" src="assets/imgs/arrow_month_1.png" />
+		      </ion-col>
+		      <ion-col col-8>
+		      	<ion-row>
+		      		<ion-col col-9 style="text-align: center; vertical-align: middle; padding-top: 7px;">
+				      	<span style="font-weight: bolder; font-size: 1.8em; top: 7px;">{{currentMonth}}</span>
+				      	
+				      </ion-col>
+				      <ion-col col-3 style="text-align: left; vertical-align: middle;">
+				      	<span style="font-size: 0.8em; color:#FFF;">{{currentYear}}</span>
+				      	<span style="font-size: 0.7em; color:red;">EVENT</span>
+				      </ion-col>
+			      </ion-row>
+			  </ion-col>
+		      <ion-col col-2 (click)="goToNextMonth() "style="text-align: center; vertical-align: middle; padding-top: 10px;">
+		      	<img style="height: 2.3em; width: auto;" src="assets/imgs/arrow_month_2.png" />
+		      </ion-col>
+		    </ion-row>
+		  </div>
+		  <div class="calendar-body">
+		    <ion-grid>
+		      <ion-row class="calendar-weekday">
+		        <ion-col><span style="color:red;">SUN</span></ion-col>
+		        <ion-col>MON</ion-col>
+		        <ion-col>TUE</ion-col>
+		        <ion-col>WED</ion-col>
+		        <ion-col>THU</ion-col>
+		        <ion-col>FRI</ion-col>
+		        <ion-col><span style="color:red;">SAT</span></ion-col>
+		      </ion-row>
+		      <ion-row class="calendar-date">
+		        <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" style="border-bottom: 0.1em solid #ccc; padding-top: 15px; padding-bottom: 15px;" >{{lastDay}}</ion-col>
+		        <ion-col col-1 *ngFor="let day of daysInThisMonth" style="border-bottom: 0.1em solid #ccc; padding-top: 15px; padding-bottom: 15px;"  (tap)="openDialogEvent(day)">
+		          <!--<span class="currentDate" *ngIf="currentDate === day; else otherDate">{{day}}</span>-->
+		          <span class="currentDate" *ngIf="checkEventDate(day); else otherDate">{{day}}</span>
+		          <ng-template #otherDate class="otherDate">{{day}}</ng-template>
+		        </ion-col>
+		        <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" style="border-bottom: 0.1em solid #ccc; padding-top: 15px; padding-bottom: 15px;">{{nextDay}}</ion-col>
+		      </ion-row>
+		    </ion-grid>
+		  </div>
+		  <div class="text-center" style="position: fixed; bottom: 80px; left:0px; text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 100%; background: url('assets/imgs/slide_next.png');">
+		  	<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropleft" md="md-arrow-dropleft" item-end></ion-icon>&nbsp;
+	        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropleft" md="md-arrow-dropleft" item-end></ion-icon>&nbsp;
+	        Back to Music &nbsp;<span style="color:#000000;">|</span> &nbsp;
+	        Next to Contact &nbsp;
+	        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+	        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+	    </div>
+	    <div class="dialog-event" *ngIf="SHOW_DIALOG_EVENT">
+		    <div class="dialog-event-content">
+		    	<div class="dialog-event-close" (tap)="closeDialogEvent()">
+		    		<img style="height: 3.5em; width: auto;" src="assets/imgs/close.png" />
+		    	</div>
+		    	<div class="event-section" *ngFor="let item of SHOW_EVENT_DETAILS">
+			    	<div class="dialog-event-header">
+			    		<!--{{selectedDateText}}-->
+			    		{{ item.event_date_text }} 
+			    	</div>
+			    	<div class="dialog-event-body">
+			    		<!--<ion-scroll zooming="true" direction="xy" style="height: 22em; width: auto;">
+			    			<div style="height: 22em; width: auto; background: url('../../{{item.event_image_url}}') no-repeat"></div>
+				    		<img style="height: 22em; width: auto;" src="{{item.event_image_url}}"  />
+				    	</ion-scroll>-->
+				    	<img style="height: 22em; width: auto;" src="{{webServerHost}}/{{item.event_image_url}}" *ngIf="item.event_image_url != ''" />
+				    	<div class="content-text" *ngIf="item.event_image_url == null || item.event_image_url == ''">{{ item.topic }}
+				    	<br><br>
+				    	Place : {{ item.event_place }}
+				    	</div>
+			    	</div>
+			    	
+			    </div>
+			    <div *ngIf="SHOW_EVENT_DETAILS.length == 0">
+			    	<div class="dialog-event-header">
+			    		{{selectedDateText}}
+			    	</div>
+			    	<div class="dialog-event-body">
+			    		<br><br><br><br><br><br><br>
+				    	There are no event on this day
+				    </div>
+			    </div>
+		    </div>
+    	</div>
+    </div>
+	</div>
 
+	<div  [hidden]="SHOW_PAGE != 'CONTACT'" (swipe)="swipeEvent($event)"  style="height: 100%; width: 100%; display: flex;align-items: center;justify-content: center;">
+      	<div style=" width: 100%; height: 67%;">
+			<h6 class="obj-center" style="color:#D21717; font-size: 2em;">X AGENCY CO.,LTD.</h6>
+			<h6 class="obj-center" style=" font-size: 1em;">X-STUDIO 4th FLOOR ZONE MAJOR CINEPLEX CENTRALPLAZA CHIANGMAI AIRPORT</h6>
+			<h6 class="obj-center" style=" font-size: 1.1em; font-weight: bold;">
+			xfmchiangmai@gmail.com
+			<br>
+			www.xfmnetwork.com
+			</h6>
+
+			<h6 class="obj-center" style=" font-size: 1.1em;">
+			084-222-9275
+			</h6>
+		   	<div class="obj-center" style="padding-top: 0.5em;">
+		   		<img src="assets/imgs/xfm_line.jpg" style="height: 10em; width: auto;">
+		   	</div>
+		</div>
+	    <div class="text-center" style="position: fixed; bottom: 80px; left:0px; text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 100%; background: url('assets/imgs/slide_next.png');">
+	        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropleft" md="md-arrow-dropleft" item-end></ion-icon>&nbsp;
+	        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropleft" md="md-arrow-dropleft" item-end></ion-icon>&nbsp;
+	        Back to Calendar &nbsp;
+	        
+	    </div>
+    
+    </div>
 </ion-content>

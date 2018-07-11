@@ -1,5 +1,6 @@
 <menu-sidebar></menu-sidebar>
-<ion-content padding class="main-classes" style="background: linear-gradient(#E22E2E, #580202);">
+<ion-content padding class="main-classes" style="background-image: url('assets/imgs/bg_page.png'); background-size: 100% 100%;" >
+	<div (swipe)="swipeEvent($event)" style="height: 100%;">
 	<br /><br /><br /><br />  
 	  <div class="calendar-header">
 	    <ion-row class="calendar-month">
@@ -95,4 +96,11 @@
 		      </ion-col>
 	      </ion-row>
   	</ion-grid>-->
+  	<div class="text-center" style="position: absolute; bottom: 25px; left:0px; text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 100%; background: url('assets/imgs/slide_next.png');">
+        Slide next to Contact &nbsp;
+        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+        <ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
+    </div>
+    
+  </div>
 </ion-content>

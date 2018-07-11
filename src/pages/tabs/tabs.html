@@ -1,13 +1,7 @@
-<ion-footer align-title="center" class="bar-assertive text-center" style="height: 120px;">
-	<ion-row>
-			<div class = "col col-offset-25 text-center" style=" text-align: center; padding-top:3%; color:#FFFFFF; height: 40px; width: 360px; background: url('assets/imgs/slide_next.png');">Slide next to Calendar &nbsp;
-				<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
-				<ion-icon style="font-size: 1.3em;" ios="ios-arrow-dropright" md="md-arrow-dropright" item-end></ion-icon>&nbsp;
-			</div>
-	</ion-row>
-	<ion-row>
-			<div class = "col col-offset-25" style="background-color: #CCC; height: 80px;">
-				AD
+<ion-footer align-title="center" class="bar-assertive text-center" style="height: 80px;margin-bottom: 5px;background-color:#000000;">
+	<ion-row (tap)="openAds(ads_url)" style="background-color:#000000;">
+			<div class = "col col-offset-25 text-center" style="background-color:#000000; height: 80px; text-align: center;">
+				<div><img src="{{webServerHost + '/' + ads}}" style="height: 80px; margin-top: 0px; padding-top: 0px;" alt="ADS"></div>
 			</div>
 	</ion-row>
 </ion-footer>

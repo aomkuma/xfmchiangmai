@@ -1,20 +1,20 @@
 <menu-sidebar></menu-sidebar>
-<ion-content padding class="main-classes" style="background: linear-gradient(#E22E2E, #580202);">
-  <br /><br /><br /><br />
-    <div class="obj-center" style="width: 100%;">
-        <img style="height: 300px; width: auto;" src="assets/imgs/studio_x9450.jpg" />
-    </div>
-    <h1 class="obj-center">
-      <ion-icon [color]="light" [name]="'md-home'" item-end></ion-icon>
-  </h1>
-    <h6 class="obj-center">บริษัท เอ็กซ์ เอเจนซี่ จำกัด (สำนักงานใหญ่)</h6>
-    <h6 class="obj-center">555/97 หมู่ที่ 4 ต.หนองผึ้ง</h6>
-    <h6 class="obj-center">อ.สารภี จ.เชียงใหม่ 50140</h6>
+<ion-content padding class="main-classes" style="background-image: url('assets/imgs/bg_page.png'); background-size: 100% 100%;">
+  <div (swipe)="swipeEvent($event)"  style="height: 100%;">
+    <br /><br /><br /><br />
+      
+      <h1 class="obj-center">
+        <ion-icon [color]="light" [name]="'md-home'" item-end></ion-icon>
+    </h1>
+      <h6 class="obj-center">บริษัท เอ็กซ์ เอเจนซี่ จำกัด (สำนักงานใหญ่)</h6>
+      <h6 class="obj-center">555/97 หมู่ที่ 4 ต.หนองผึ้ง</h6>
+      <h6 class="obj-center">อ.สารภี จ.เชียงใหม่ 50140</h6>
+      <h6 class="obj-center">
+        <ion-icon [color]="light" [name]="'md-phone-portrait'" item-end></ion-icon>
+        : 084-222-9275
+       </h6>
     <h6 class="obj-center">
-      <ion-icon [color]="light" [name]="'md-phone-portrait'" item-end></ion-icon>
-      : 084-222-9275
-     </h6>
-  <h6 class="obj-center">
-      <ion-icon [color]="light" [name]="'md-mail-open'" item-end></ion-icon>
-      : xfmchiangmai@gmail.com</h6>
+        <ion-icon [color]="light" [name]="'md-mail-open'" item-end></ion-icon>
+        : xfmchiangmai@gmail.com</h6>
+    </div>
 </ion-content>

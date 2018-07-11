@@ -1,32 +1,35 @@
+<div *ngIf="PERSON_PROFILE.username != ''">
 <ion-menu [content]="mycontent">
-  <ion-header style="padding: 45px;">
+
+  <ion-header style="padding: 45px; height:45%;">
     <ion-row>
-      <div class="col col-lg-12 obj-center">
-        <img class="circle-pic" width="512" src="./assets/imgs/my-avatar.jpg" />
+      <div class="col col-lg-12 obj-center" (tap)="choosePhoto()">
+        <img src="./assets/imgs/edit_pic.png" style="position: absolute; top:5%; right: 20%; width: 7%;" />
+        <img class="circle-pic" src="{{PERSON_PROFILE.img_profile}}" *ngIf="PERSON_PROFILE != null" />
       </div>
     </ion-row>
     <ion-row>
-      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 1.3em;">
-        a0mkuma
+      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 1.3em;" *ngIf="PERSON_PROFILE != null">
+        {{PERSON_PROFILE.username}}
       </div>
     </ion-row>
     <ion-row>
-      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 0.8em;">
-        Korapot U-koskit
+      <div class="col col-lg-12 obj-center" style="color:#ccc; font-size: 0.9em;" *ngIf="PERSON_PROFILE != null">
+        {{PERSON_PROFILE.firstname}} {{PERSON_PROFILE.lastname}}
       </div>
     </ion-row>
   </ion-header>
   <ion-content  class="menu-style">
     <ion-list  class="menu-style">
-    	<ion-item menuClose detail-none>ข้อมูลผู้ใช้</ion-item>
-    	<ion-item menuClose detail-none>แก้ไขข้อมูล</ion-item>
+    	<ion-item detail-none (tap)="viewProfile()">ข้อมูลผู้ใช้</ion-item>
+    	<ion-item detail-none (tap)="updateProfile()">แก้ไขข้อมูล</ion-item>
     </ion-list>
   </ion-content>
-  <ion-footer padding style="text-align: center;">
+  <ion-footer style="text-align: center; margin-bottom: 20px;">
     <span style="font-size: 0.7em;">XFM 94.5 v 1.0</span>
     <br>
     <ion-row style="padding-top: 15px;">
-          <div class="col col-lg-12 obj-center"  style="text-align: center; background-color: #D72525; padding: 15px;">
+          <div class="col col-lg-12 obj-center"  style="text-align: center; background-color: #af1524; padding: 15px;"  (tap)="logout()">
                
                 <ion-icon [name]="'md-log-out'" item-end></ion-icon>
                
@@ -35,14 +38,87 @@
     </ion-row>
   </ion-footer>
 </ion-menu>
+</div>
+
+<div *ngIf="PERSON_PROFILE.username == ''">
+<ion-menu [content]="mycontent">
+
+  <ion-header >
+    <div style="padding-top: 2%; padding-bottom: 2%; background-image: url('assets/imgs/headline_burger.png');
+     background-repeat: no-repeat;background-size:cover;text-align: center;">
+    <ion-title>
+      <ion-row >
+        <div class = "col col-offset-33 obj-center white-color" style="padding-top:3%;">
+          <img style="height: 38px; width: auto;" src="assets/imgs/logo_head.png" />
+        </div>
+      </ion-row>
+    </ion-title>
+    </div>
+  </ion-header>
+  <ion-content  class="menu-style obj-center">
+      <ion-row class="text-center" style="width: 100%; text-align: center;">
+        <div class="div-textbox col col-lg-12 obj-center">
+          <input class="my-textbox" type="email" [(ngModel)]="username" placeholder="Username">
+        </div>
+      </ion-row>
+      <ion-row class="text-center" style="width: 100%; text-align: center;">
+        <div class="div-textbox col col-lg-12 obj-center">
+          <input class="my-textbox" type="password" [(ngModel)]="password" placeholder="Password">
+        </div>
+      </ion-row>
+      <ion-row style="padding-top: 25px;">
+          <div class="col col-lg-12 obj-center"  style="text-align: center; background-color: #35a544; padding: 15px; font-size: 1.3em;" (tap)="login()">
+              Login
+          </div>
+      </ion-row>
+      <ion-row class="text-center" style="width: 100%; text-align: center;">
+        <div class="div-textbox col col-lg-12 obj-center" style="padding-top: 30px; margin: 0px;" (tap)="loginFacebook()">
+          <div style="background-color: #FFFFFF; width: 100%; padding: 0px;">
+            <img style="height: 38px; width: auto;" src="assets/imgs/facebook_login.png" />
+            {{FB_PROFILE}}
+          </div>
+        </div>
+      </ion-row>
+      <!--
+      <ion-row class="text-center" style="width: 100%; text-align: center; margin: 0px;">
+        <div class="div-textbox col col-lg-12 obj-center" style="padding-top: 0px;">
+          <div style="background-color: #FFFFFF; width: 100%; padding: 0px;">
+            <img style="height: 38px; width: auto;" src="assets/imgs/twitter_login.png" />
+          </div>
+        </div>
+      </ion-row>
+      <ion-row class="text-center" style="width: 100%; text-align: center; margin: 0px;">
+        <div class="div-textbox col col-lg-12 obj-center" style="padding-top: 0px; ">
+          <div style="background-color: #FFFFFF; width: 100%; padding: 0px;">
+            <img style="height: 38px; width: auto;" src="assets/imgs/google_login.png" />
+          </div>
+        </div>
+      </ion-row>
+      -->
+      <ion-row style="padding: 0px;">
+          <div class="col col-lg-12 obj-center"  style="text-align: center; padding-top: 5px; font-size: 1.1em;">
+              - - - - - - - or - - - - - - -
+          </div>
+      </ion-row>
+      <ion-row style="padding-top: 5px;">
+          <div class="col col-lg-12 obj-center"  style="text-align: center; background-color: #af1524; padding: 15px;font-size: 1.3em;" (tap)="showRegister()">
+              
+              <span style="font-weight: bolder;">X</span> Register
+          </div>
+    </ion-row>
+  </ion-content>
+  
+</ion-menu>
+</div>
 
 <ion-nav #mycontent [root]="rootPage"></ion-nav>
 
 <ion-header>
-  <ion-navbar style="background:url('assets/imgs/headline.png')">
+    <div style="padding-top: 1%; padding-bottom: 1%; background-image: url('assets/imgs/headline.png');
+     background-repeat: no-repeat;background-size:cover;text-align: center;">
     <ion-title>
-    	<ion-row>
-    		<div class = "col col-offset-33 white-color medium-size">
+    	<ion-row >
+    		<div class = "col col-offset-33 white-color medium-size" style="text-align: left;">
 				<ion-icon [color]="light" [name]="'menu'" menuToggle item-end></ion-icon>
 		    </div>
 		    <div class = "col col-offset-33 obj-center white-color" style="padding-top:3%;">
@@ -53,5 +129,206 @@
         </div>
 	    </ion-row>
     </ion-title>
-  </ion-navbar>
+    </div>
 </ion-header>
+
+<ion-content *ngIf="SHOW_REGISTER" style="background-image: url('assets/imgs/bg_page_2.png'); background-size: 100% 100%; z-index: 999; color: #FFFFFF;overflow: scroll;">
+  <ion-row>
+     <div class="col col-lg-12 obj-center" style="padding-top: 1.5em;">
+      <img src="assets/imgs/logo_regis_page.png" style="height: 5em;">
+      <br>
+      <h3>- REGISTER -</h3>
+    </div>
+  </ion-row>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      E-mail : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="email" [(ngModel)]="PERSON_PROFILE.username" placeholder="E-mail">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Password : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="password" [(ngModel)]="PERSON_PROFILE.password" placeholder="Password">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Name : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="text" [(ngModel)]="PERSON_PROFILE.firstname" placeholder="Name">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Surname : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="text" [(ngModel)]="PERSON_PROFILE.lastname" placeholder="Surname">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Birthday : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" [(ngModel)]="PERSON_PROFILE.birthday_show" placeholder="Birthday" (tap)="chooseBirthday()">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Mobile : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="number" [(ngModel)]="PERSON_PROFILE.mobile" placeholder="Mobile">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Gender : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%; padding-top: 5px;">
+      
+        <input type="radio" [(ngModel)]="PERSON_PROFILE.gender" value="M" id="gender_male"> <label for="gender_male">MALE</label> &nbsp;&nbsp;&nbsp;
+        <input type="radio" [(ngModel)]="PERSON_PROFILE.gender" value="F" id="gender_female"> <label for="gender_female">FEMALE </label>
+      
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px; text-align: center;">
+    <div style="width: 100%; text-align: center; padding-top: 5px; font-size: 1.2em;" (tap)="confirmRegister(PERSON_PROFILE)">
+      <img style="height: 38px; width: auto;" src="assets/imgs/confirm_regis_page.png" />
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 100%; text-align: center; padding-top: 0px; font-size: 1.2em;" (tap)="cancelRegister()">
+      <img style="height: 38px; width: auto;" src="assets/imgs/cancel_regis_page.png" />
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="SHOW_UPDATE_PROFILE" style="background-image: url('assets/imgs/bg_page_2.png'); background-size: 100% 100%; z-index: 999; color: #FFFFFF; overflow: scroll;">
+  <ion-row>
+     <div class="col col-lg-12 obj-center" style="padding-top: 1.5em;">
+      <img src="assets/imgs/logo_regis_page.png" style="height: 5em;">
+      <br>
+      <h3>- UPDATE PROFILE -</h3>
+    </div>
+  </ion-row>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      E-mail : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="email" [(ngModel)]="PERSON_PROFILE.username" placeholder="E-mail">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Password : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="password" [(ngModel)]="PERSON_PROFILE.password" placeholder="Password">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Name : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="text" [(ngModel)]="PERSON_PROFILE.firstname" placeholder="Name">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Surname : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="text" [(ngModel)]="PERSON_PROFILE.lastname" placeholder="Surname">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Birthday : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" [(ngModel)]="PERSON_PROFILE.birthday_show" placeholder="Birthday" (tap)="chooseBirthday()">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Mobile : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%;">
+      <input class="my-textbox" type="number" [(ngModel)]="PERSON_PROFILE.mobile" placeholder="Mobile">
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 30%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Gender : 
+    </div>
+    <div style="width: 60%; margin-right: 5%; margin-left: 5%; padding-top: 5px;">
+      
+        <input type="radio" [(ngModel)]="PERSON_PROFILE.gender" value="M" id="gender_male"> <label for="gender_male">MALE</label> &nbsp;&nbsp;&nbsp;
+        <input type="radio" [(ngModel)]="PERSON_PROFILE.gender" value="F" id="gender_female"> <label for="gender_female">FEMALE </label>
+      
+    </div>
+  </div>
+  <div class="row" style="margin-top: 10px; text-align: center;">
+    <div style="width: 100%; text-align: center; padding-top: 5px; font-size: 1.2em;" (tap)="confirmUpdate(PERSON_PROFILE)">
+      <img style="height: 38px; width: auto;" src="assets/imgs/confirm_regis_page.png" />
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 100%; text-align: center; padding-top: 0px; font-size: 1.2em;" (tap)="cancelUpdate()">
+      <img style="height: 38px; width: auto;" src="assets/imgs/cancel_regis_page.png" />
+    </div>
+  </div>
+</ion-content>
+
+<ion-content *ngIf="SHOW_VIEW_PROFILE" style="background-image: url('assets/imgs/bg_page_2.png'); background-size: 100% 100%; z-index: 999; color: #FFFFFF;overflow: scroll;">
+  <ion-row>
+     <div class="col col-lg-12 obj-center" style="padding-top: 1.5em;">
+      <img src="assets/imgs/logo_regis_page.png" style="height: 5em;">
+      <br>
+      <h3>- VIEW PROFILE -</h3>
+    </div>
+  </ion-row>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 90%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      E-mail : {{PERSON_PROFILE.username}}
+    </div>
+    
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 90%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Name : {{PERSON_PROFILE.firstname}} {{PERSON_PROFILE.lastname}}
+    </div>
+    
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 90%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Birthday : {{PERSON_PROFILE.birthday_show}}
+    </div>
+    
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 90%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Mobile : {{PERSON_PROFILE.mobile}}
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 90%; text-align: left; padding-top: 5px; font-size: 1.2em;padding-left: 5%;">
+      Gender : {{ PERSON_PROFILE.gender=='M'?'MALE':'FEMALE'}}
+    </div>
+  </div>
+  <div class="row" style="margin-top: 5px;">
+    <div style="width: 100%; text-align: center; padding-top: 0px; font-size: 1.2em;" (tap)="back()">
+      <img style="height: 38px; width: auto;" src="assets/imgs/cancel_regis_page.png" />
+    </div>
+  </div>
+</ion-content>

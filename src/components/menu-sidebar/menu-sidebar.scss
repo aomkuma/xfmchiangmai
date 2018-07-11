@@ -1,3 +1,19 @@
+ 
+.div-textbox{
+    text-align: center; 
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+} 
+
+.my-textbox{
+    color: #000000;
+    border-radius: 10px;
+    width: 100%;
+    height: 30px;
+    text-align: center;
+}
+
 .menu-style{
 	background-color: #3C3C3C;
 	color: #FFFFFF;
@@ -21,8 +37,8 @@
 }
 
 .circle-pic{
-    width:130px;
-    height:130px;
+    width:70%;
+    height:auto;
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }

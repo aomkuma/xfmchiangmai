@@ -11,36 +11,43 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { StreamingMedia } from '@ionic-native/streaming-media';
 import { Media } from '@ionic-native/media';
-import { MediaStreamServiceProvider } from '../providers/media-stream-service/media-stream-service';
 import { HttpClientModule } from '@angular/common/http';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
-import { SMS } from '@ionic-native/sms';
 
 import {ComponentsModule} from '../components/components.module';
 import { HTTP } from '@ionic-native/http';
+import { IonicStorageModule } from '@ionic/storage';
+import { CallNumber } from '@ionic-native/call-number';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
+import { Crop } from '@ionic-native/crop';
+import { DatePicker } from '@ionic-native/date-picker';
+import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
+import { BackgroundMode } from '@ionic-native/background-mode';
+import { AppMinimize } from '@ionic-native/app-minimize';
+
 
 @NgModule({
   declarations: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    AboutPage,
+    ContactPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    ComponentsModule
+    ComponentsModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
     TabsPage
   ],
@@ -48,13 +55,21 @@ import { HTTP } from '@ionic-native/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-  	StreamingMedia,
     Media,
-    MediaStreamServiceProvider,
     SocialSharing,
     InAppBrowser,
-    SMS,
-    HTTP
+    HTTP,
+    IonicStorageModule,
+    CallNumber,
+    Camera,
+    FileTransfer
+    ,File
+    ,Crop
+    ,DatePicker
+    ,Facebook
+    ,BackgroundMode
+    ,AppMinimize
+    
   ]
 })
 export class AppModule {}

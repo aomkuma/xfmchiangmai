@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
 @Component({
   selector: 'page-about',
   templateUrl: 'about.html'
 })
 export class AboutPage {
+
+ //  	rootPage:any = 'AboutPage';
 	date: any;
 	daysInThisMonth: any;
 	daysInLastMonth: any;
@@ -19,10 +20,11 @@ export class AboutPage {
 	}
 
 	ionViewWillEnter() {
-    this.date = new Date();
-    this.monthNames = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
-    this.getDaysOfMonth();
-  }
+		console.log('view event');
+	    this.date = new Date();
+	    this.monthNames = ["JANUARY","FEBRUARY","MARCH","APRIL","MAY","JUNE","JULY","AUGUST","SEPTEMBER","OCTOBER","NOVEMBER","DECEMBER"];
+	    this.getDaysOfMonth();
+	}
 
 	getDaysOfMonth() {
 	  this.daysInThisMonth = new Array();
