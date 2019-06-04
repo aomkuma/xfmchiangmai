@@ -158,10 +158,22 @@ export class HomePage {
         this.startPlay();
         */
 
-        this.startPlay();
-        this.getSongDesc();
-        setInterval(() => this.getSongDesc(), 5000);
+        // this.startPlay();
+        // this.getSongDesc();
+        // setInterval(() => this.getSongDesc(), 5000);
         //setInterval(() => this.loopPlayMedia(), 30000);
+
+        this.backgroundMode.enable();
+        this.backgroundMode.disableWebViewOptimizations(); 
+        this.backgroundMode.overrideBackButton();
+        this.backgroundMode.setDefaults({
+            icon: 'icon'
+            ,resume: true
+            ,hidden: false
+            ,bigText: false
+        })
+        
+        this.getConfig();
 
       })
 
@@ -177,6 +189,33 @@ export class HomePage {
     }else if((e.direction == 2 && this.SHOW_PAGE == 'EVENT')){
       this.SHOW_PAGE = 'CONTACT';
     }
+  }
+
+  getConfig(){
+       this.http.get(this.webServerHost + '/config_service.php', {}, {})
+      .then(data => {
+        var res = JSON.parse(data.data);
+        this.mediaHost = res.mediaHost;
+        this.descSongHost = res.descSongHost;
+        this.subject = res.subject;
+        this.message = res.message;
+        this.image = res.image;
+        this.uri = res.uri;
+        this.fbUrl = res.fbUrl;
+        this.igUrl = res.igUrl;
+        this.mobileNo = res.mobileNo;
+        console.log(res.mediaHost);
+        this.startPlay();
+        this.getSongDesc();
+        setInterval(() => this.getSongDesc(), 5000);
+
+      })
+      .catch(error => {
+        // console.log(error.status);
+        // console.log(error.error); // error message as string
+        // console.log(error.headers);
+
+      });
   }
 
   getSongDesc(){

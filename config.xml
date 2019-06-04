@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.chiangmai.xfm.radio" version="0.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.chiangmai.xfm.radio" version="0.1.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>XFM Chiangmai</name>
     <description>An awesome FM Radio app in Chiangmai</description>
     <author email="korapotu@gmail.com" href="https://www.facebook.com/Aom.Nubs">korapotu@gmail.com</author>
@@ -77,44 +77,41 @@
         <splash height="480" src="resources/ios/splash/Default~iphone.png" width="320" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
     </platform>
-    <plugin name="cordova-plugin-device" spec="^2.0.1" />
-    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
-    <plugin name="cordova-plugin-ionic-webview" spec="^1.1.16" />
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="com.hutchind.cordova.plugins.streamingmedia" spec="~0.1.4" />
-    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
-    <plugin name="cordova-plugin-media" spec="^5.0.2" />
-    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
-    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
-    <plugin name="cordova-sms-plugin" spec="^0.1.11" />
-    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
-    <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
-    <plugin name="cordova-sqlite-storage" spec="^2.3.2" />
-    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
-    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
-    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
-    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
-    <plugin name="cordova-plugin-file" spec="^6.0.1" />
-    <plugin name="cordova-plugin-crop" spec="^0.4.0" />
-    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
-    <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
-        <variable name="APP_ID" value="2124063131211252" />
-        <variable name="APP_NAME" value="XFM" />
-        <variable name="ANDROID_SDK_VERSION" value="4.+" />
-    </plugin>
     <platform name="android">
         <config-file parent="/resources" target="./res/values/strings.xml">
             <string name="fb_app_id">2124063131211252</string>
             <string name="fb_app_name">XFM</string>
         </config-file>
     </platform>
+    <plugin name="cordova-plugin-streaming-media" spec="~0.1.4" />
+    <plugin name="cordova-plugin-whitelist" spec="^1.3.3" />
+    <plugin name="cordova-plugin-statusbar" spec="^2.4.1" />
+    <plugin name="cordova-plugin-media" spec="^5.0.2" />
+    <plugin name="cordova-plugin-x-socialsharing" spec="^5.4.0" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
+    <plugin name="cordova-plugin-inappbrowser" spec="^3.0.0" />
+    <plugin name="cordova-plugin-advanced-http" spec="^1.11.1" />
+    <plugin name="cordova-sqlite-storage" spec="^2.3.2" />
+    <plugin name="cordova-plugin-nativeaudio" spec="^3.0.9" />
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <plugin name="cordova-plugin-file-transfer" spec="^1.7.1" />
+    <plugin name="cordova-plugin-file" spec="^6.0.1" />
+    <plugin name="cordova-plugin-crop" spec="^0.4.0" />
+    <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
+    <plugin name="cordova-plugin-facebook4" spec="^2.1.0">
+        <variable name="APP_ID" value="403925273350573" />
+        <variable name="APP_NAME" value="XFM" />
+        <variable name="ANDROID_SDK_VERSION" value="4.+" />
+    </plugin>
     <plugin name="cordova-plugin-background-mode" spec="^0.7.2" />
     <plugin name="cordova-plugin-appminimize" spec="^1.0.0" />
-    <allow-navigation href="http://192.168.1.4:8100" />
-    <allow-navigation href="http://192.168.43.91:8100" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
     <plugin name="cordova-plugin-insomnia" spec="^4.3.0" />
-    <allow-navigation href="http://192.168.1.2:8100" />
+    <plugin name="cordova-plugin-device" spec="^2.0.2" />
+    <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="cordova-plugin-ionic-webview" spec="^1.2.1" />
+    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
+    <plugin name="call-number" spec="^1.0.1" />
     <engine name="browser" spec="5.0.3" />
-    <engine name="android" spec="7.0.0" />
+    <engine name="android" spec="^7.0.0" />
 </widget>
