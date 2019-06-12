@@ -47,6 +47,7 @@
     "cordova": "^8.1.2",
     "cordova-android": "^7.0.0",
     "cordova-browser": "5.0.3",
+    "cordova-ios": "4.5.5",
     "cordova-plugin-advanced-http": "^1.11.1",
     "cordova-plugin-appminimize": "^1.0.1",
     "cordova-plugin-background-mode": "^0.7.2",
@@ -125,7 +126,8 @@
     },
     "platforms": [
       "browser",
-      "android"
+      "android",
+      "ios"
     ]
   }
 }
