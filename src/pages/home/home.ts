@@ -22,7 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 })
 export class HomePage {
 
-  public webServerHost : string = 'http://xfmnetwork.com/backoffice/';
+  public webServerHost : string = 'https://app.xfmnetwork.com/backoffice/';
   public mediaHost : string = 'http://stream.xfmnetwork.com:8613/;stream.mp3';
   public descSongHost : string = 'http://plaza.xfmnetwork.com/db/nowplaying.txt';
   _streamPaused:boolean

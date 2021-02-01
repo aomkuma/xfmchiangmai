@@ -163,19 +163,6 @@
     "is_top_level": true,
     "variables": {}
   },
-  "cordova-plugin-facebook4": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-facebook4@^2.1.0"
-    },
-    "is_top_level": true,
-    "variables": {
-      "APP_ID": "403925273350573",
-      "APP_NAME": "XFM",
-      "ANDROID_SDK_VERSION": "4.+",
-      "FACEBOOK_ANDROID_SDK_VERSION": "4.+"
-    }
-  },
   "cordova-plugin-background-mode": {
     "source": {
       "type": "registry",

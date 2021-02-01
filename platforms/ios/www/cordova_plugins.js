@@ -314,14 +314,6 @@ module.exports = [
     ]
   },
   {
-    "id": "cordova-plugin-facebook4.FacebookConnectPlugin",
-    "file": "plugins/cordova-plugin-facebook4/www/facebook-native.js",
-    "pluginId": "cordova-plugin-facebook4",
-    "clobbers": [
-      "facebookConnectPlugin"
-    ]
-  },
-  {
     "id": "cordova-plugin-file-transfer.FileTransferError",
     "file": "plugins/cordova-plugin-file-transfer/www/FileTransferError.js",
     "pluginId": "cordova-plugin-file-transfer",
@@ -473,7 +465,6 @@ module.exports.metadata =
   "cordova-plugin-camera": "4.0.3",
   "cordova-plugin-crop": "0.3.1",
   "cordova-plugin-datepicker": "0.9.3",
-  "cordova-plugin-facebook4": "2.5.0",
   "cordova-plugin-file-transfer": "1.7.1",
   "cordova-plugin-inappbrowser": "3.0.0",
   "cordova-plugin-insomnia": "4.3.0",

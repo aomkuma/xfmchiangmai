@@ -15,7 +15,7 @@ export class TabsPage {
 	tab1Root = HomePage;
 	tab2Root = AboutPage;
 	tab3Root = ContactPage;
-	public webServerHost : string = 'http://xfmnetwork.com/backoffice/';
+	public webServerHost : string = 'https://app.xfmnetwork.com/backoffice/';
 	ADS_LIST : any;
 	ads : any;
 	ads_url : any;
